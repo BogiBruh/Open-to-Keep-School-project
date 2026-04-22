@@ -1,0 +1,82 @@
+[
+  {
+    "_idIzleta": 7,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 9,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 11,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 12,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 13,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 15,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 16,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  },
+  {
+    "_idIzleta": 17,
+    "_mesto": "zakintos",
+    "_drzava": "grcka",
+    "_cena": 100.0,
+    "_popust": 20.0,
+    "_brDana": 7,
+    "_brMesta": 50,
+    "_datum": "2026-04-22T00:00:00+02:00"
+  }
+]

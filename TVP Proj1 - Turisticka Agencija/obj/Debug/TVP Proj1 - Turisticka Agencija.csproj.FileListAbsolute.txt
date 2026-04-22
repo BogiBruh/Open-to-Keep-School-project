@@ -12,3 +12,18 @@ C:\Users\aleks\Desktop\TVP Proj1 - Turisticka Agencija\TVP Proj1 - Turisticka Ag
 C:\Users\aleks\Desktop\TVP Proj1 - Turisticka Agencija\TVP Proj1 - Turisticka Agencija\bin\Debug\Newtonsoft.Json.dll
 C:\Users\aleks\Desktop\TVP Proj1 - Turisticka Agencija\TVP Proj1 - Turisticka Agencija\bin\Debug\Newtonsoft.Json.xml
 C:\Users\aleks\Desktop\TVP Proj1 - Turisticka Agencija\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj.81F89A08.Up2Date
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\bin\Debug\TVP Proj1 - Turisticka Agencija.exe.config
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\bin\Debug\TVP Proj1 - Turisticka Agencija.exe
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\bin\Debug\TVP Proj1 - Turisticka Agencija.pdb
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj1 - Turisticka Agencija.csproj.AssemblyReference.cache
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP_Proj1___Turisticka_Agencija.loginForm.resources
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP_Proj1___Turisticka_Agencija.Properties.Resources.resources
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP_Proj1___Turisticka_Agencija.signUpForm.resources
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj1 - Turisticka Agencija.csproj.GenerateResource.cache
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj1 - Turisticka Agencija.csproj.CoreCompileInputs.cache
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj.81F89A08.Up2Date
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj1 - Turisticka Agencija.exe
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP Proj1 - Turisticka Agencija.pdb
+C:\Users\aleks\Desktop\Bogi Tours(School project)\TVP Proj1 - Turisticka Agencija\obj\Debug\TVP_Proj1___Turisticka_Agencija.adminPanel.resources

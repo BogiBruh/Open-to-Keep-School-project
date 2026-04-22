@@ -12,7 +12,7 @@ namespace TVP_Proj1___Turisticka_Agencija
 {
     public partial class loginForm : Form
     {
-        public List<user> userList = new List<user>();
+        public BindingList<user> userList = new BindingList<user>();
 
         public loginForm()
         {
@@ -27,6 +27,7 @@ namespace TVP_Proj1___Turisticka_Agencija
 
             if(citanje == -1)
             {
+                MessageBox.Show("Nešto nije uredu(problem sa citanjem fajlova).");
                 this.Close();
             }
         }
@@ -52,9 +53,36 @@ namespace TVP_Proj1___Turisticka_Agencija
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("brao brao");
+            string attemptedEmail = tBoxEmail.Text;
+            string attemptedPassword = tBoxPassword.Text;
 
-            this.Close();
+            bool uspesnaPrijava = false;
+
+            foreach (user u in userList)
+            {
+                if(u._email == attemptedEmail && u._password == attemptedPassword)
+                {
+                    Console.WriteLine($"Uspešna prijava {attemptedEmail} == {u._email} i {attemptedPassword} == {u._password}\n");
+                   
+                    uspesnaPrijava = true;
+
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"Pokusan {attemptedEmail} != {u._email} i {attemptedPassword} != {u._password}\n");
+                }
+            }
+            if (!uspesnaPrijava)
+            {
+                MessageBox.Show("Neuspešna prijava. Proverite unete podatke i pokušajte ponovo.");
+            }
+            else
+            {
+                adminPanel admin = new adminPanel(userList);
+                admin.Show();
+                this.Hide();
+            }
         }
     }
 }

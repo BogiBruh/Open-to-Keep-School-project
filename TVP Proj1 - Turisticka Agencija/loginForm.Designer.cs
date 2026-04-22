@@ -31,8 +31,8 @@
             this.labelLogo = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tBoxEmail = new System.Windows.Forms.TextBox();
+            this.tBoxPassword = new System.Windows.Forms.TextBox();
             this.labelPrijava = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -54,9 +54,9 @@
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.Location = new System.Drawing.Point(143, 105);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(110, 20);
+            this.labelUsername.Size = new System.Drawing.Size(53, 20);
             this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "Korisničko ime";
+            this.labelUsername.Text = "E-mail";
             // 
             // labelPassword
             // 
@@ -68,22 +68,22 @@
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Lozinka";
             // 
-            // textBox1
+            // tBoxEmail
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(147, 137);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 24);
-            this.textBox1.TabIndex = 3;
+            this.tBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxEmail.Location = new System.Drawing.Point(147, 137);
+            this.tBoxEmail.Name = "tBoxEmail";
+            this.tBoxEmail.Size = new System.Drawing.Size(208, 24);
+            this.tBoxEmail.TabIndex = 3;
             // 
-            // textBox2
+            // tBoxPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(147, 224);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(208, 26);
-            this.textBox2.TabIndex = 4;
+            this.tBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxPassword.Location = new System.Drawing.Point(147, 224);
+            this.tBoxPassword.Name = "tBoxPassword";
+            this.tBoxPassword.PasswordChar = '*';
+            this.tBoxPassword.Size = new System.Drawing.Size(208, 26);
+            this.tBoxPassword.TabIndex = 4;
             // 
             // labelPrijava
             // 
@@ -117,8 +117,8 @@
             this.ClientSize = new System.Drawing.Size(514, 401);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.labelPrijava);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tBoxPassword);
+            this.Controls.Add(this.tBoxEmail);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.labelLogo);
@@ -136,8 +136,8 @@
         private System.Windows.Forms.Label labelLogo;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tBoxEmail;
+        private System.Windows.Forms.TextBox tBoxPassword;
         private System.Windows.Forms.Label labelPrijava;
         private System.Windows.Forms.Button btnLogin;
     }

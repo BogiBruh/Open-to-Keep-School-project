@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             _accountType = accountType;
         }
 
-        public int readUsers(List<user> userList)
+        public int readUsers(BindingList<user> userList)
         {
             string jsonText = null;
             try
@@ -41,7 +42,10 @@ namespace TVP_Proj1___Turisticka_Agencija
                 jsonText = File.ReadAllText("users.json");
 
                 List<user> tmpUserList = JsonConvert.DeserializeObject<List<user>>(jsonText);
-                userList.AddRange(tmpUserList);
+                foreach (user _user in tmpUserList) 
+                {
+                    userList.Add(_user);
+                }
 
                 return 0;
             }

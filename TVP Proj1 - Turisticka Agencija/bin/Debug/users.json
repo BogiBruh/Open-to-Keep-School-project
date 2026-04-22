@@ -1,20 +1,20 @@
 [
   {
-    "_idNaloga": 1,
+    "_idNaloga": 0,
     "_ime": "a",
-    "_prezime": "b",
+    "_prezime": "a",
     "_username": "a",
     "_email": "a",
     "_password": "a",
     "_accountType": "admin"
   },
   {
-    "_idNaloga": 2,
-    "_ime": "a",
-    "_prezime": "b",
-    "_username": "a",
-    "_email": "a",
-    "_password": "a",
+    "_idNaloga": 1,
+    "_ime": "bobi",
+    "_prezime": "bobison",
+    "_username": "bobi",
+    "_email": "bobi@gmail.com",
+    "_password": "bobi",
     "_accountType": "admin"
   }
 ]
