@@ -16,6 +16,7 @@ namespace TVP_Proj1___Turisticka_Agencija
     public partial class signUpForm : Form
     {
         loginForm _loginForma;
+        bool userOrAdmin = false; // false = user, true = admin
 
         public signUpForm()
         {
@@ -28,17 +29,30 @@ namespace TVP_Proj1___Turisticka_Agencija
             _loginForma = loginForma;
         }
 
+        private void signUpForm_Load(object sender, EventArgs e)
+        {
+            label7.Visible = false;
+            tBoxSifra.Visible = false;
+            btnSignUp.Location = new Point(btnSignUp.Location.X, 510);
+        }
+
         private void btnUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("za sad ne radi, vratite se kasnije!");
+            label7.Visible = false;
+            tBoxSifra.Visible = false;
+            btnSignUp.Location = new Point(btnSignUp.Location.X, 510);
+            userOrAdmin = false;
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("za sad samo ovaj radi!");
+            label7.Visible = true;
+            tBoxSifra.Visible = true;
+            btnSignUp.Location = new Point(btnSignUp.Location.X, 600);
+            userOrAdmin = true;
         }
 
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private void btnSignUp_Click(object sender, EventArgs e) //TODO: validiranje da li je sve popunjeno kao prvo, i crash prevention za imePrezime index out of bounds
         {
             bool imejlIspravan = false;
             bool lozinkaIspravna = false; // mozda dodam mozda ne
@@ -46,7 +60,11 @@ namespace TVP_Proj1___Turisticka_Agencija
             bool sifraIspravna = false;
 
             string imejl = tBoxEmail.Text;
-            if (imejl.Substring(imejl.Length - 10) != "@gmail.com")
+            if (imejl.Length <= 10)
+            {
+                tBoxEmail.BackColor = Color.Red;
+            }
+            else if(imejl.Substring(imejl.Length - 10) != "@gmail.com")
             {
                 tBoxEmail.BackColor = Color.Red;
             }
@@ -85,29 +103,59 @@ namespace TVP_Proj1___Turisticka_Agencija
             }
 
             //sada if ako se sve podudara
-            if (imejlIspravan && lozinkeIste && sifraIspravna)
+            if (userOrAdmin)
             {
-                user ubaciUsera = new user();
-                if (_loginForma.userList.Count() > 0)
+                if (imejlIspravan && lozinkeIste && sifraIspravna)
                 {
-                    ubaciUsera.generateUser((_loginForma.userList.Last()._idNaloga + 1), tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "admin");
+                    user ubaciUsera = new user();
+                    if (_loginForma.userList.Count() > 0)
+                    {
+                        ubaciUsera.generateUser((_loginForma.userList.Last()._idNaloga + 1), tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "admin");
+                    }
+                    else
+                    {
+                        ubaciUsera.generateUser(1, tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "admin");
+                    }
+
+                    _loginForma.userList.Add(ubaciUsera);
+
+                    string jsonText = JsonConvert.SerializeObject(_loginForma.userList, Formatting.Indented);
+                    File.WriteAllText("users.json", jsonText);
+
+                    _loginForma.Show();
+                    this.Close();
                 }
                 else
                 {
-                    ubaciUsera.generateUser(1, tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "admin");
+                    MessageBox.Show("Neka polja nisu ispravno popunjena, proverite vrednosti u crvenim poljima i pokušajte ponovo!");
                 }
-                
-                _loginForma.userList.Add(ubaciUsera);
-
-                string jsonText = JsonConvert.SerializeObject(_loginForma.userList, Formatting.Indented);
-                File.WriteAllText("users.json", jsonText);
-
-                _loginForma.Show();
-                this.Close();
             }
             else
             {
-                MessageBox.Show("Neka polja nisu ispravno popunjena, proverite vrednosti u crvenim poljima i pokušajte ponovo!");
+                if (imejlIspravan && lozinkeIste)
+                {
+                    user ubaciUsera = new user();
+                    if (_loginForma.userList.Count() > 0)
+                    {
+                        ubaciUsera.generateUser((_loginForma.userList.Last()._idNaloga + 1), tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "user");
+                    }
+                    else
+                    {
+                        ubaciUsera.generateUser(1, tBoxImePrezime.Text, tBoxUsername.Text, tBoxEmail.Text, tBoxLozinka.Text, "user");
+                    }
+
+                    _loginForma.userList.Add(ubaciUsera);
+
+                    string jsonText = JsonConvert.SerializeObject(_loginForma.userList, Formatting.Indented);
+                    File.WriteAllText("users.json", jsonText);
+
+                    _loginForma.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Neka polja nisu ispravno popunjena, proverite vrednosti u crvenim poljima i pokušajte ponovo!");
+                }
             }
         }
     }

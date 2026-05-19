@@ -81,7 +81,7 @@
             this.btnIzleti.Name = "btnIzleti";
             this.btnIzleti.Size = new System.Drawing.Size(147, 59);
             this.btnIzleti.TabIndex = 4;
-            this.btnIzleti.Text = "Izleti";
+            this.btnIzleti.Text = "Igre";
             this.btnIzleti.UseVisualStyleBackColor = true;
             this.btnIzleti.Click += new System.EventHandler(this.btnIzleti_Click);
             // 
@@ -133,7 +133,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "adminPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bogi Tours - Admin panel";
+            this.Text = "Open to Rent - Admin panel";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.adminPanel_FormClosed);
             this.Load += new System.EventHandler(this.adminPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

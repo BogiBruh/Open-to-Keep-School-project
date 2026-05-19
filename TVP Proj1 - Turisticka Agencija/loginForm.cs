@@ -57,6 +57,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             string attemptedPassword = tBoxPassword.Text;
 
             bool uspesnaPrijava = false;
+            user loggedIn = null;
 
             foreach (user u in userList)
             {
@@ -65,6 +66,7 @@ namespace TVP_Proj1___Turisticka_Agencija
                     Console.WriteLine($"Uspešna prijava {attemptedEmail} == {u._email} i {attemptedPassword} == {u._password}\n");
                    
                     uspesnaPrijava = true;
+                    loggedIn = u;
 
                     break;
                 }
@@ -77,11 +79,22 @@ namespace TVP_Proj1___Turisticka_Agencija
             {
                 MessageBox.Show("Neuspešna prijava. Proverite unete podatke i pokušajte ponovo.");
             }
-            else
+            else if(loggedIn._accountType == "user" && loggedIn != null)
+            {
+                MessageBox.Show("Cekaj da napravim obican korisnicki interfejs!");
+                /*userPanel userP = new userPanel(userList, loggedIn);
+                userP.Show();
+                this.Hide();*/
+            }
+            else if(loggedIn._accountType == "admin" && loggedIn != null)
             {
                 adminPanel admin = new adminPanel(userList);
                 admin.Show();
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Nešto je negde crklo.");
             }
         }
     }

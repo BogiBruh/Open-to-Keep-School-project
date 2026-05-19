@@ -41,11 +41,11 @@
             // 
             this.labelLogo.AutoSize = true;
             this.labelLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.Location = new System.Drawing.Point(12, 9);
+            this.labelLogo.Location = new System.Drawing.Point(82, 9);
             this.labelLogo.Name = "labelLogo";
-            this.labelLogo.Size = new System.Drawing.Size(488, 74);
+            this.labelLogo.Size = new System.Drawing.Size(338, 74);
             this.labelLogo.TabIndex = 0;
-            this.labelLogo.Text = "Bogi Tours\r\nTuristička agencija za studente";
+            this.labelLogo.Text = "Open To Rent\r\nIzdavanje video igara";
             this.labelLogo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelUsername

@@ -180,17 +180,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(49, 504);
+            this.label7.Location = new System.Drawing.Point(36, 501);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(339, 36);
+            this.label7.Size = new System.Drawing.Size(368, 36);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Šestocifreni Bogi turs™ kod primljen po zaposlenju\r\n(Npr. 123456)";
+            this.label7.Text = "Šestocifreni Open to Rent™ kod primljen po zaposlenju\r\n(Npr. 123456)";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnSignUp
             // 
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignUp.Location = new System.Drawing.Point(119, 596);
+            this.btnSignUp.Location = new System.Drawing.Point(119, 600);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(193, 55);
             this.btnSignUp.TabIndex = 15;
@@ -222,6 +222,7 @@
             this.Name = "signUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign Up";
+            this.Load += new System.EventHandler(this.signUpForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{13513BEA-58A0-4742-BD53-9F4B21E18366}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TVP_Proj1___Turisticka_Agencija</RootNamespace>
-    <AssemblyName>TVP Proj1 - Turisticka Agencija</AssemblyName>
+    <RootNamespace>TVP_Proj1___Open_To_Rent</RootNamespace>
+    <AssemblyName>TVP Proj1 - Open to Rent</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,7 +36,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,13 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adminPanel.cs">
+    <Compile Include="admin stvari\addOrEditGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="adminPanel.Designer.cs">
+    <Compile Include="admin stvari\addOrEditGameForm.Designer.cs">
+      <DependentUpon>addOrEditGameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin stvari\addOrEditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin stvari\addOrEditUserForm.Designer.cs">
+      <DependentUpon>addOrEditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin stvari\adminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin stvari\adminPanel.Designer.cs">
       <DependentUpon>adminPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="izlet.cs" />
+    <Compile Include="klase\igra.cs" />
     <Compile Include="loginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +84,14 @@
     <Compile Include="signUpForm.Designer.cs">
       <DependentUpon>signUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="user.cs" />
-    <EmbeddedResource Include="adminPanel.resx">
+    <Compile Include="klase\user.cs" />
+    <EmbeddedResource Include="admin stvari\addOrEditGameForm.resx">
+      <DependentUpon>addOrEditGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin stvari\addOrEditUserForm.resx">
+      <DependentUpon>addOrEditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin stvari\adminPanel.resx">
       <DependentUpon>adminPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
@@ -85,6 +105,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="signUpForm.resx">
       <DependentUpon>signUpForm.cs</DependentUpon>
@@ -102,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="user stvari\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
