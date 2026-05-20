@@ -86,6 +86,7 @@
       <DependentUpon>signUpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="klase\user.cs" />
+    <Compile Include="user stvari\prikazRezervacije.cs" />
     <Compile Include="user stvari\userPanel.cs">
       <SubType>Form</SubType>
     </Compile>

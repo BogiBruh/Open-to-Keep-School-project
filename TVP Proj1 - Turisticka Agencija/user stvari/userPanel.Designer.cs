@@ -47,6 +47,7 @@
             this.labelDaysLeft = new System.Windows.Forms.Label();
             this.labelReservationStartDate = new System.Windows.Forms.Label();
             this.labelReservationEndDate = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReservations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,11 +230,22 @@
             this.labelReservationEndDate.TabIndex = 18;
             this.labelReservationEndDate.Text = "Datum";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(12, 618);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(74, 51);
+            this.btnLogout.TabIndex = 19;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // userPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.labelReservationEndDate);
             this.Controls.Add(this.labelReservationStartDate);
             this.Controls.Add(this.labelDaysLeft);
@@ -258,7 +270,7 @@
             this.Name = "userPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Open To Rent";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.userPanel_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.userPanel_FormClosing);
             this.Load += new System.EventHandler(this.userPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReservations)).EndInit();
             this.ResumeLayout(false);
@@ -287,5 +299,6 @@
         private System.Windows.Forms.Label labelDaysLeft;
         private System.Windows.Forms.Label labelReservationStartDate;
         private System.Windows.Forms.Label labelReservationEndDate;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

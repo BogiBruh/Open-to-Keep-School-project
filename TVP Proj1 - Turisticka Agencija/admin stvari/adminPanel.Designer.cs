@@ -36,6 +36,7 @@
             this.btnKorisnici = new System.Windows.Forms.Button();
             this.btnRezervacije = new System.Windows.Forms.Button();
             this.btnTrecaOpcija = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,11 +116,22 @@
             this.btnTrecaOpcija.UseVisualStyleBackColor = true;
             this.btnTrecaOpcija.Click += new System.EventHandler(this.btnTrecaOpcija_Click);
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(13, 623);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(90, 46);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // adminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnTrecaOpcija);
             this.Controls.Add(this.btnRezervacije);
             this.Controls.Add(this.btnKorisnici);
@@ -134,7 +146,7 @@
             this.Name = "adminPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Open to Rent - Admin panel";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.adminPanel_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.adminPanel_FormClosing);
             this.Load += new System.EventHandler(this.adminPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -152,5 +164,6 @@
         private System.Windows.Forms.Button btnKorisnici;
         private System.Windows.Forms.Button btnRezervacije;
         private System.Windows.Forms.Button btnTrecaOpcija;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

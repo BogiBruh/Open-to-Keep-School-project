@@ -10,22 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TVP_Proj1___Open_To_Rent.admin_stvari;
+using TVP_Proj1___Open_To_Rent.klase;
 
 namespace TVP_Proj1___Turisticka_Agencija
 {
     public partial class adminPanel : Form
     {
         public BindingList<igra> gameList = new BindingList<igra>();
-        //public BindingList<reservation> reservationList = new BindingList<reservation>();
+        public BindingList<rezervacija> reservationList = new BindingList<rezervacija>();
         public BindingList<user> userList = new BindingList<user>();
         string menu = "igre"; // podrazumevano se prikazuju igre, ali se menja na klik dugmadi
+        loginForm parentForm;
+
+        bool logoutovanje = false; // sluzi da bi znali da li zatvaramo formu zbog logouta ili zbog X dugmeta
 
         public adminPanel()
         {
             InitializeComponent();
         }
 
-        public adminPanel(BindingList<user> _userList)
+        public adminPanel(BindingList<user> _userList, loginForm parentForma)
         {
             InitializeComponent();
 
@@ -45,6 +49,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             renameColumns();
 
             userList = _userList;
+            parentForm = parentForma;
 
             btnPrvaOpcija.Text = "Dodaj igru";
             btnDrugaOpcija.Text = "Uredi igru";
@@ -60,11 +65,22 @@ namespace TVP_Proj1___Turisticka_Agencija
                 MessageBox.Show("Nesto ne predvidjeno nije uredu sa citanjem fajla!");
                 this.Close();
             }
+
+            rezervacija tmpObjZaCitanjeRez = new rezervacija();
+            int citanjeRez = tmpObjZaCitanjeRez.readRezervacije(reservationList);
+            if (citanjeRez == -1)
+            {
+                MessageBox.Show("Nesto ne predvidjeno nije uredu sa citanjem rezervacija!");
+                this.Close();
+            }
         }
 
-        private void adminPanel_FormClosed(object sender, FormClosedEventArgs e)
+        private void adminPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if(e.CloseReason == CloseReason.UserClosing && !logoutovanje)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnIzleti_Click(object sender, EventArgs e)
@@ -97,8 +113,7 @@ namespace TVP_Proj1___Turisticka_Agencija
 
         private void btnRezervacije_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ovde ce se prikazivati rezervacije, ali za sad ne radi!");
-            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = reservationList;
             dataGridView1.ClearSelection();
             dataGridView1.CurrentCell = null;
             menu = "rezervacije";
@@ -257,7 +272,18 @@ namespace TVP_Proj1___Turisticka_Agencija
 
         private void izbrisiRezervaciju()
         {
-            MessageBox.Show("za sad ne radi!(izbrisiRezervaciju)");
+            //MessageBox.Show("za sad ne radi!(izbrisiRezervaciju)");
+            if(dataGridView1.CurrentRow != null)
+            {
+                rezervacija rezZaBrisanje = (rezervacija)dataGridView1.CurrentRow.DataBoundItem;
+                reservationList.Remove(rezZaBrisanje);
+                File.WriteAllText("rezervacije.json", JsonConvert.SerializeObject(reservationList, Formatting.Indented));
+            }
+            else
+            {
+                MessageBox.Show("Morate selektovati rezervaciju da bi radilo!");
+                return;
+            }
         }
 
         private void renameColumns()
@@ -292,6 +318,13 @@ namespace TVP_Proj1___Turisticka_Agencija
                     MessageBox.Show("nesto ne predvidjeno nije uredu sa menijem!(renameColumns)");
                     break;
             }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logoutovanje = true;
+            parentForm.Show();
+            this.Close();
         }
     }
 }

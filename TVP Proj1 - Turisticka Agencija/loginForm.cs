@@ -82,13 +82,20 @@ namespace TVP_Proj1___Turisticka_Agencija
             }
             else if(loggedIn != null && loggedIn._accountType == "user")
             {
-                userPanel user = new userPanel(loggedIn._idNaloga);
+                userPanel user = new userPanel(loggedIn._idNaloga, this);
+                // kada se logoutujemo da nema vise podataka od proslog logina
+                tBoxEmail.Text = "";
+                tBoxPassword.Text = "";
+                tBoxEmail.Focus();
                 user.Show();
                 this.Hide();
             }
             else if(loggedIn._accountType == "admin" && loggedIn != null)
             {
-                adminPanel admin = new adminPanel(userList);
+                adminPanel admin = new adminPanel(userList, this);
+                tBoxEmail.Text = "";
+                tBoxPassword.Text = "";
+                tBoxEmail.Focus();
                 admin.Show();
                 this.Hide();
             }
