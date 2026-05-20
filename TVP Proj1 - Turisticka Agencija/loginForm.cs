@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TVP_Proj1___Open_To_Rent.user_stvari;
 
 namespace TVP_Proj1___Turisticka_Agencija
 {
@@ -79,12 +80,11 @@ namespace TVP_Proj1___Turisticka_Agencija
             {
                 MessageBox.Show("Neuspešna prijava. Proverite unete podatke i pokušajte ponovo.");
             }
-            else if(loggedIn._accountType == "user" && loggedIn != null)
+            else if(loggedIn != null && loggedIn._accountType == "user")
             {
-                MessageBox.Show("Cekaj da napravim obican korisnicki interfejs!");
-                /*userPanel userP = new userPanel(userList, loggedIn);
-                userP.Show();
-                this.Hide();*/
+                userPanel user = new userPanel(loggedIn._idNaloga);
+                user.Show();
+                this.Hide();
             }
             else if(loggedIn._accountType == "admin" && loggedIn != null)
             {

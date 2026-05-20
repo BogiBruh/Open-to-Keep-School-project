@@ -151,19 +151,19 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
                 username = tBoxUsername.Text;
                 password = tBoxLozinka.Text;
                 accountType = cBoxUserAdmin.SelectedItem.ToString();
-                
-                if(_parentForm.userList.Count > 0)
-                {
-                    userZaVracanje.generateUser(_parentForm.userList.Last()._idNaloga + 1, imePrezime, username, email, password, accountType);
-                }
-                else
-                {
-                    userZaVracanje.generateUser(1, imePrezime, username, email, password, accountType);
-                }
 
                 if (_svrha == "dodaj")
                 {
+                    if (_parentForm.userList.Count > 0)
+                    {
+                        userZaVracanje.generateUser(_parentForm.userList.Last()._idNaloga + 1, imePrezime, username, email, password, accountType);
+                    }
+                    else
+                    {
+                        userZaVracanje.generateUser(1, imePrezime, username, email, password, accountType);
+                    }
                     _parentForm.userList.Add(userZaVracanje);
+                    MessageBox.Show("Uspešno dodavanje novog korisnika.");
                     this.Close();
                 }
                 else if (_svrha == "uredi")
@@ -174,6 +174,7 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
                     _userZaUredjenje._email = email;
                     _userZaUredjenje._password = password;
                     _userZaUredjenje._accountType = accountType;
+                    MessageBox.Show("Podaci uspešno uređeni.");
                     this.Close();
                 }
             }

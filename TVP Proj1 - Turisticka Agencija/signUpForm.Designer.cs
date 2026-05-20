@@ -222,6 +222,7 @@
             this.Name = "signUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign Up";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.signUpForm_FormClosing);
             this.Load += new System.EventHandler(this.signUpForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

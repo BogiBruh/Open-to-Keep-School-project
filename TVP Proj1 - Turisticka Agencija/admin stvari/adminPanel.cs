@@ -78,6 +78,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             btnPrvaOpcija.Text = "Dodaj igru";
             btnDrugaOpcija.Text = "Uredi igru";
             btnTrecaOpcija.Text = "Obrisi igru";
+            btnTrecaOpcija.Visible = true;
         }
 
         private void btnKorisnici_Click(object sender, EventArgs e)
@@ -91,6 +92,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             btnPrvaOpcija.Text = "Dodaj korisnika";
             btnDrugaOpcija.Text = "Uredi korisnika";
             btnTrecaOpcija.Text = "Obrisi korisnika";
+            btnTrecaOpcija.Visible = true;
         }
 
         private void btnRezervacije_Click(object sender, EventArgs e)
@@ -104,7 +106,7 @@ namespace TVP_Proj1___Turisticka_Agencija
 
             btnPrvaOpcija.Text = "Uredi rezervaciju";
             btnDrugaOpcija.Text = "Obrisi rezervaciju";
-            btnTrecaOpcija.Hide();
+            btnTrecaOpcija.Visible = false;
         }
 
         private void btnPrvaOpcija_Click(object sender, EventArgs e)
@@ -151,9 +153,11 @@ namespace TVP_Proj1___Turisticka_Agencija
             {
                 case "igre":
                     izbrisiIgru();
+                    MessageBox.Show("Uspešno brisanje igre iz baze podataka.");
                     break;
                 case "korisnici":
                     izbrisiKorisnika();
+                    MessageBox.Show("Uspešno brisanje korisnika iz baze podataka.");
                     break;
                 default:
                     MessageBox.Show("nesto ne predvidjeno nije uredu sa menijem!(btnTrecaOpcija");

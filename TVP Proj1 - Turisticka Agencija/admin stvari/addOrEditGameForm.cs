@@ -153,19 +153,19 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
             }
             else
             {
-                if (_parentForm.gameList.Count() > 0)
-                {
-                    igraZaVracanje.generisiIgru(_parentForm.gameList.Last()._idIgre + 1, nazivIgre, studio, zanr, godIzdavanja, platforma, opis,
-                                                cena, brPrimeraka, starosnaGranica);
-                }
-                else
-                {
-                    igraZaVracanje.generisiIgru(1, nazivIgre, studio, zanr, godIzdavanja, platforma, opis, cena, brPrimeraka, starosnaGranica);
-                }
-
                 if (_svrha == "dodaj")
                 {
+                    if (_parentForm.gameList.Count() > 0)
+                    {
+                        igraZaVracanje.generisiIgru(_parentForm.gameList.Last()._idIgre + 1, nazivIgre, studio, zanr, godIzdavanja, platforma, opis,
+                                                    cena, brPrimeraka, starosnaGranica);
+                    }
+                    else
+                    {
+                        igraZaVracanje.generisiIgru(1, nazivIgre, studio, zanr, godIzdavanja, platforma, opis, cena, brPrimeraka, starosnaGranica);
+                    }
                     _parentForm.gameList.Add(igraZaVracanje);
+                    MessageBox.Show("Uspešno dodata nova igra.");
                     this.Close();
                 }
                 else if (_svrha == "uredi")
@@ -179,6 +179,7 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
                     _igraZaUredjenje._price = cena;
                     _igraZaUredjenje._numberOfCopies = brPrimeraka;
                     _igraZaUredjenje._ageRating = starosnaGranica;
+                    MessageBox.Show("Podaci igrice su uspešno promenjeni.");
                     this.Close();
                 }
             }
