@@ -48,6 +48,10 @@
             this.labelReservationStartDate = new System.Windows.Forms.Label();
             this.labelReservationEndDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnComboboxFilter = new System.Windows.Forms.Button();
+            this.tBoxFilter = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReservations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +153,7 @@
             // 
             this.btnFilterAll.Location = new System.Drawing.Point(365, 10);
             this.btnFilterAll.Name = "btnFilterAll";
-            this.btnFilterAll.Size = new System.Drawing.Size(156, 28);
+            this.btnFilterAll.Size = new System.Drawing.Size(117, 28);
             this.btnFilterAll.TabIndex = 10;
             this.btnFilterAll.Text = "Sve rezervacije";
             this.btnFilterAll.UseVisualStyleBackColor = true;
@@ -157,9 +161,9 @@
             // 
             // btnFilterActive
             // 
-            this.btnFilterActive.Location = new System.Drawing.Point(537, 10);
+            this.btnFilterActive.Location = new System.Drawing.Point(488, 10);
             this.btnFilterActive.Name = "btnFilterActive";
-            this.btnFilterActive.Size = new System.Drawing.Size(156, 28);
+            this.btnFilterActive.Size = new System.Drawing.Size(144, 28);
             this.btnFilterActive.TabIndex = 11;
             this.btnFilterActive.Text = "Aktivne rezervacije";
             this.btnFilterActive.UseVisualStyleBackColor = true;
@@ -167,9 +171,9 @@
             // 
             // btnFilterFinished
             // 
-            this.btnFilterFinished.Location = new System.Drawing.Point(710, 9);
+            this.btnFilterFinished.Location = new System.Drawing.Point(638, 10);
             this.btnFilterFinished.Name = "btnFilterFinished";
-            this.btnFilterFinished.Size = new System.Drawing.Size(156, 28);
+            this.btnFilterFinished.Size = new System.Drawing.Size(152, 28);
             this.btnFilterFinished.TabIndex = 12;
             this.btnFilterFinished.Text = "Zavrsene rezervacije";
             this.btnFilterFinished.UseVisualStyleBackColor = true;
@@ -240,11 +244,56 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Ime igre",
+            "Zanr",
+            "Platforma",
+            "Datum Pocetka Rezervacije",
+            "Datum Vracanja Rezervacije"});
+            this.comboBox1.Location = new System.Drawing.Point(796, 11);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(175, 26);
+            this.comboBox1.TabIndex = 20;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnComboboxFilter
+            // 
+            this.btnComboboxFilter.Location = new System.Drawing.Point(1151, 10);
+            this.btnComboboxFilter.Name = "btnComboboxFilter";
+            this.btnComboboxFilter.Size = new System.Drawing.Size(101, 28);
+            this.btnComboboxFilter.TabIndex = 21;
+            this.btnComboboxFilter.Text = "Primeni filter";
+            this.btnComboboxFilter.UseVisualStyleBackColor = true;
+            this.btnComboboxFilter.Click += new System.EventHandler(this.btnComboboxFilter_Click);
+            // 
+            // tBoxFilter
+            // 
+            this.tBoxFilter.Location = new System.Drawing.Point(977, 12);
+            this.tBoxFilter.Name = "tBoxFilter";
+            this.tBoxFilter.Size = new System.Drawing.Size(168, 24);
+            this.tBoxFilter.TabIndex = 22;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(978, 13);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(167, 24);
+            this.dateTimePicker1.TabIndex = 23;
+            this.dateTimePicker1.Visible = false;
+            // 
             // userPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.tBoxFilter);
+            this.Controls.Add(this.btnComboboxFilter);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.labelReservationEndDate);
             this.Controls.Add(this.labelReservationStartDate);
@@ -300,5 +349,9 @@
         private System.Windows.Forms.Label labelReservationStartDate;
         private System.Windows.Forms.Label labelReservationEndDate;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnComboboxFilter;
+        private System.Windows.Forms.TextBox tBoxFilter;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

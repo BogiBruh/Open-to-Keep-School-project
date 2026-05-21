@@ -172,7 +172,6 @@ namespace TVP_Proj1___Turisticka_Agencija
                     break;
                 case "korisnici":
                     izbrisiKorisnika();
-                    MessageBox.Show("Uspešno brisanje korisnika iz baze podataka.");
                     break;
                 default:
                     MessageBox.Show("nesto ne predvidjeno nije uredu sa menijem!(btnTrecaOpcija");
@@ -192,9 +191,22 @@ namespace TVP_Proj1___Turisticka_Agencija
         {
             if (dataGridView1.CurrentRow != null)
             {
-                igra selektovanaIgra = (igra)dataGridView1.CurrentRow.DataBoundItem;
-                gameList.Remove(selektovanaIgra);
-                File.WriteAllText("igre.json", JsonConvert.SerializeObject(gameList, Formatting.Indented));
+                if(reservationList.Any(rez => rez.idIgre == ((igra)dataGridView1.CurrentRow.DataBoundItem)._idIgre && rez.status == statusRezervacije.Aktivna))
+                {
+                    MessageBox.Show("Ne možete obrisati igru koja ima aktivne rezervacije! Molim vas, sačekajte da se sve rezervacije za ovu igru završe.");
+                    return;
+                }
+                else if(reservationList.Any(rez => rez.idIgre == ((igra)dataGridView1.CurrentRow.DataBoundItem)._idIgre && rez.status == statusRezervacije.Vracena))
+                {
+                    MessageBox.Show("Morate obrisati sve zavrsene rezervacije pre nego sto obrisete igru.");
+                    return;
+                }
+                else
+                {
+                    igra selektovanaIgra = (igra)dataGridView1.CurrentRow.DataBoundItem;
+                    gameList.Remove(selektovanaIgra);
+                    File.WriteAllText("igre.json", JsonConvert.SerializeObject(gameList, Formatting.Indented));
+                }
             }
             else
             {
@@ -254,9 +266,19 @@ namespace TVP_Proj1___Turisticka_Agencija
         {
             if (dataGridView1.CurrentRow != null)
             {
-                user selektovanKorisnik = (user)dataGridView1.CurrentRow.DataBoundItem;
-                userList.Remove(selektovanKorisnik);
-                File.WriteAllText("users.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
+                if(reservationList.Any(rez => rez.idKorisnika == ((user)dataGridView1.CurrentRow.DataBoundItem)._idNaloga && rez.status == statusRezervacije.Aktivna))
+                {
+                    MessageBox.Show("Ne možete obrisati korisnika koji ima aktivne rezervacije! Molim vas, sačekajte da korisnik vrati sve svoje rezervacije.");
+                    return;
+                }
+                else
+                {
+                    user selektovanKorisnik = (user)dataGridView1.CurrentRow.DataBoundItem;
+                    userList.Remove(selektovanKorisnik);
+                    File.WriteAllText("users.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
+
+                    MessageBox.Show("Uspešno brisanje korisnika iz baze podataka.");
+                }
             }
             else
             {
@@ -276,8 +298,16 @@ namespace TVP_Proj1___Turisticka_Agencija
             if(dataGridView1.CurrentRow != null)
             {
                 rezervacija rezZaBrisanje = (rezervacija)dataGridView1.CurrentRow.DataBoundItem;
+                if (rezZaBrisanje == null) return;
+                igra vracenaIgra = gameList.FirstOrDefault(ig => ig._idIgre == rezZaBrisanje.idIgre);
+                if (vracenaIgra != null)
+                {
+                    vracenaIgra._numberOfCopies++;
+                }
+                else return;
                 reservationList.Remove(rezZaBrisanje);
                 File.WriteAllText("rezervacije.json", JsonConvert.SerializeObject(reservationList, Formatting.Indented));
+                File.WriteAllText("igre.json", JsonConvert.SerializeObject(gameList, Formatting.Indented));
             }
             else
             {
@@ -309,10 +339,16 @@ namespace TVP_Proj1___Turisticka_Agencija
                     dataGridView1.Columns[3].HeaderText = "Username";
                     dataGridView1.Columns[4].HeaderText = "Email";
                     dataGridView1.Columns[5].HeaderText = "Password";
-                    dataGridView1.Columns[6].HeaderText = "Account type";
+                    dataGridView1.Columns[6].HeaderText = "Tip naloga";
                     break;
                 case "rezervacije":
-                    //dataGridView1.Columns[0].HeaderText = "";
+                    dataGridView1.Columns[0].HeaderText = "ID rezervacije";
+                    dataGridView1.Columns[1].HeaderText = "ID korisnika";
+                    dataGridView1.Columns[2].HeaderText = "ID igre";
+                    dataGridView1.Columns[3].HeaderText = "Datum pocetka";
+                    dataGridView1.Columns[4].HeaderText = "Datum kraja";
+                    dataGridView1.Columns[5].HeaderText = "Cena";
+                    dataGridView1.Columns[6].HeaderText = "Status rezervacije";
                     break;
                 default:
                     MessageBox.Show("nesto ne predvidjeno nije uredu sa menijem!(renameColumns)");

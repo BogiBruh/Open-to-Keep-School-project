@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnPrvaOpcija = new System.Windows.Forms.Button();
             this.btnDrugaOpcija = new System.Windows.Forms.Button();
             this.btnIzleti = new System.Windows.Forms.Button();
@@ -47,14 +46,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1043, 441);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // btnPrvaOpcija
             // 
@@ -139,9 +130,7 @@
             this.Controls.Add(this.btnDrugaOpcija);
             this.Controls.Add(this.btnPrvaOpcija);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "adminPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -150,14 +139,12 @@
             this.Load += new System.EventHandler(this.adminPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnPrvaOpcija;
         private System.Windows.Forms.Button btnDrugaOpcija;
         private System.Windows.Forms.Button btnIzleti;

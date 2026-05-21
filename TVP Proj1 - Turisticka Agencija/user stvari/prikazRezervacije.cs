@@ -13,9 +13,9 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
         public string gameName { get; set; }
         public string genre { get; set; }
         public string platform { get; set; }
-        public int brKopija { get; set; }
         public DateTime datumRezervacije { get; set; }
         public DateTime datumVracanja { get; set; }
+        public double cenaRezervacije { get; set; }
         public statusRezervacije status { get; set; }
 
         public prikazRezervacije()
@@ -24,19 +24,19 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
             gameName = "";
             genre = "";
             platform = "";
-            brKopija = 0;
             datumRezervacije = DateTime.Now;
             datumVracanja = DateTime.Now;
+            cenaRezervacije = 0;
             status = statusRezervacije.Vracena;
         }
 
-        public prikazRezervacije(int idRezervacije, string gameName, string genre, string platform, int brKopija, DateTime datumRezervacije, DateTime datumVracanja, statusRezervacije status)
+        public prikazRezervacije(int idRezervacije, string gameName, string genre, string platform, double cenaRezervacije, DateTime datumRezervacije, DateTime datumVracanja, statusRezervacije status)
         {
             this.idRezervacije = idRezervacije;
             this.gameName = gameName;
             this.genre = genre;
             this.platform = platform;
-            this.brKopija = brKopija;
+            this.cenaRezervacije = cenaRezervacije;
             this.datumRezervacije = datumRezervacije;
             this.datumVracanja = datumVracanja;
             this.status = status;
