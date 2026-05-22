@@ -21,6 +21,7 @@ namespace TVP_Proj1___Turisticka_Agencija
         public BindingList<user> userList = new BindingList<user>();
         string menu = "igre"; // podrazumevano se prikazuju igre, ali se menja na klik dugmadi
         loginForm parentForm;
+        user trenutniNalog;
 
         bool logoutovanje = false; // sluzi da bi znali da li zatvaramo formu zbog logouta ili zbog X dugmeta
 
@@ -29,7 +30,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             InitializeComponent();
         }
 
-        public adminPanel(BindingList<user> _userList, loginForm parentForma)
+        public adminPanel(BindingList<user> _userList, loginForm parentForma, user loggedIn)
         {
             InitializeComponent();
 
@@ -50,6 +51,7 @@ namespace TVP_Proj1___Turisticka_Agencija
 
             userList = _userList;
             parentForm = parentForma;
+            trenutniNalog = loggedIn;
 
             btnPrvaOpcija.Text = "Dodaj igru";
             btnDrugaOpcija.Text = "Uredi igru";
@@ -276,6 +278,11 @@ namespace TVP_Proj1___Turisticka_Agencija
                 else
                 {
                     user selektovanKorisnik = (user)dataGridView1.CurrentRow.DataBoundItem;
+                    if(selektovanKorisnik == trenutniNalog)
+                    {
+                        MessageBox.Show("Ne možete obrisati nalog sa kojim ste trenutno ulogovani!");
+                        return;
+                    }
                     userList.Remove(selektovanKorisnik);
                     File.WriteAllText("users.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
 
