@@ -109,8 +109,20 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
                 valid = false;
                 tBoxUsername.BackColor = Color.Red;
             }
+            /*nadji korisnika gde je email isti kao uneti, i ako je svrha dodaj 
+             * ILI
+             * ako je svrha unesi, a id nadjenog naloga nije isti onom prosledjenom
+             * 
+             * umorio sam se samo smisljajuci logiku iza ovoga
+             */
+            else if (_parentForm.userList.Any(u => u._username == tBoxUsername.Text && (_svrha == "dodaj" || u._idNaloga != _userZaUredjenje._idNaloga)))
+            {
+                valid = false;
+                tBoxUsername.BackColor = Color.Red;
+                MessageBox.Show("Uneti username već postoji. Molim vas unesite drugi username.");
+            }
 
-            // Specijalan(ima i else) jer mora da se proveri da li je mejl mejl
+            // Specijalan(ima i else) jer mora da se proveri da li je mejl mejl i da li vec postoji u bazi, a ne samo da li je prazan ili ne
             if (string.IsNullOrWhiteSpace(tBoxEmail.Text)) 
             {
                 valid = false;
@@ -125,6 +137,16 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
             {
                 valid = false;
                 tBoxEmail.BackColor = Color.Red;
+            }
+            /*nadji korisnika gde je email isti kao uneti, i ako je svrha dodaj 
+             * ILI
+             * ako je svrha unesi, a id nadjenog naloga nije isti onom prosledjenom
+             */
+            else if(_parentForm.userList.Any(u => u._email == tBoxEmail.Text && (_svrha == "dodaj" || u._idNaloga != _userZaUredjenje._idNaloga)))
+            {
+                valid = false;
+                tBoxEmail.BackColor = Color.Red;
+                MessageBox.Show("Uneti email već postoji. Molim vas unesite drugi email.");
             }
 
             if (string.IsNullOrWhiteSpace(tBoxLozinka.Text))

@@ -68,9 +68,16 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
                 if (rez == null) return;
                 igra rezervisanaIgra = parentForma.gameList.FirstOrDefault(i => i._idIgre == rez.idIgre);
                 if(rezervisanaIgra == null) return;
+                
+                int brDana = (dateEnd.Value.Date - dateStart.Value.Date).Days;
+                if(brDana <= 0)
+                {
+                    MessageBox.Show("Datum vraćanja mora biti posle datuma rezervacije!");
+                    return;
+                }
+
                 rez.datumVracanja = dateEnd.Value.Date;
                 rezPrikaz.datumVracanja = dateEnd.Value.Date;
-                int brDana = (dateEnd.Value.Date - dateStart.Value.Date).Days;
 
                 double cena = rezervisanaIgra._price * brDana;
                 rez.cena = cena;
@@ -181,6 +188,34 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
             labelDescription.Text = selektovanaIgra._description;
             dateStart.Value = rez.datumRezervacije;
             dateEnd.Value = rez.datumVracanja;
+            labelCenaRez.Text = rez.cena.ToString() + " RSD";
+        }
+
+        private void dateEnd_ValueChanged(object sender, EventArgs e)
+        {
+            if (dataGridIgre.CurrentRow?.DataBoundItem == null) return;
+            prikazRezervacije selektovanaRezervacija = (prikazRezervacije)dataGridIgre.CurrentRow.DataBoundItem;
+            if (selektovanaRezervacija == null) return;
+            rezervacija rez = parentForma.reservationList.FirstOrDefault(r => r.idRezervacije == selektovanaRezervacija.idRezervacije);
+            if (rez == null) return;
+            igra selektovanaIgra = parentForma.gameList.FirstOrDefault(i => i._idIgre == rez.idIgre);
+            if (selektovanaIgra == null) return;
+            double prvobitnaCena = rez.cena;
+            int brDana = (dateEnd.Value.Date - dateStart.Value.Date).Days;
+            double novaCena = selektovanaIgra._price * brDana;
+            labelCenaEdita.Text = novaCena.ToString() + " RSD";
+            if (novaCena < prvobitnaCena)
+            {
+                Random rand = new Random();
+                int kod = 0;
+                for(int i = 0; i < 6; i++) kod = kod * 10 + rand.Next(0, 10);
+                labelPopust.Text = $"Imate pravo na povracaj novca u iznosu od {(prvobitnaCena - novaCena).ToString() + " RSD"}! Prilikom vraćanja igre dajte i kod ({kod}) i dobićete navedeni iznos nazad!";
+                labelPopust.Visible = true;
+            }
+            else
+            {
+                labelPopust.Visible = false;
+            }
         }
     }
 }

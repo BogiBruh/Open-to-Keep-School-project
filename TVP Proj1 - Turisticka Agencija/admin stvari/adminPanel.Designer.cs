@@ -31,7 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnPrvaOpcija = new System.Windows.Forms.Button();
             this.btnDrugaOpcija = new System.Windows.Forms.Button();
-            this.btnIzleti = new System.Windows.Forms.Button();
+            this.btnIgre = new System.Windows.Forms.Button();
             this.btnKorisnici = new System.Windows.Forms.Button();
             this.btnRezervacije = new System.Windows.Forms.Button();
             this.btnTrecaOpcija = new System.Windows.Forms.Button();
@@ -67,15 +67,15 @@
             this.btnDrugaOpcija.UseVisualStyleBackColor = true;
             this.btnDrugaOpcija.Click += new System.EventHandler(this.btnDrugaOpcija_Click);
             // 
-            // btnIzleti
+            // btnIgre
             // 
-            this.btnIzleti.Location = new System.Drawing.Point(13, 52);
-            this.btnIzleti.Name = "btnIzleti";
-            this.btnIzleti.Size = new System.Drawing.Size(147, 59);
-            this.btnIzleti.TabIndex = 4;
-            this.btnIzleti.Text = "Igre";
-            this.btnIzleti.UseVisualStyleBackColor = true;
-            this.btnIzleti.Click += new System.EventHandler(this.btnIzleti_Click);
+            this.btnIgre.Location = new System.Drawing.Point(13, 52);
+            this.btnIgre.Name = "btnIgre";
+            this.btnIgre.Size = new System.Drawing.Size(147, 59);
+            this.btnIgre.TabIndex = 4;
+            this.btnIgre.Text = "Igre";
+            this.btnIgre.UseVisualStyleBackColor = true;
+            this.btnIgre.Click += new System.EventHandler(this.btnIgre_Click);
             // 
             // btnKorisnici
             // 
@@ -126,7 +126,7 @@
             this.Controls.Add(this.btnTrecaOpcija);
             this.Controls.Add(this.btnRezervacije);
             this.Controls.Add(this.btnKorisnici);
-            this.Controls.Add(this.btnIzleti);
+            this.Controls.Add(this.btnIgre);
             this.Controls.Add(this.btnDrugaOpcija);
             this.Controls.Add(this.btnPrvaOpcija);
             this.Controls.Add(this.dataGridView1);
@@ -147,7 +147,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnPrvaOpcija;
         private System.Windows.Forms.Button btnDrugaOpcija;
-        private System.Windows.Forms.Button btnIzleti;
+        private System.Windows.Forms.Button btnIgre;
         private System.Windows.Forms.Button btnKorisnici;
         private System.Windows.Forms.Button btnRezervacije;
         private System.Windows.Forms.Button btnTrecaOpcija;

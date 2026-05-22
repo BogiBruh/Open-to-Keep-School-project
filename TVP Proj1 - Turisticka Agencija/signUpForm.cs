@@ -103,6 +103,12 @@ namespace TVP_Proj1___Turisticka_Agencija
                 tBoxUsername.BackColor = Color.Red;
                 valid = false;
             }
+            else if(_loginForma.userList.Any(user => user._username == tBoxUsername.Text)) // ako vec postoji nalog sa tim usernameom ne valja
+            {
+                MessageBox.Show("Vec postoji korisnik sa tim korisnickim imenom. Molim vas pokusajte ponovo.");
+                tBoxUsername.BackColor = Color.Red;
+                valid = false;
+            }
 
             if (string.IsNullOrWhiteSpace(tBoxEmail.Text)) // ako je prazno ne valja
             {
@@ -114,8 +120,14 @@ namespace TVP_Proj1___Turisticka_Agencija
                 tBoxEmail.BackColor = Color.Red;
                 valid = false;
             }
-            else if (tBoxEmail.Text.Substring(tBoxEmail.Text.Length - 10) != "@gmail.com") // i zadnje, ako nema @gmail.com na kraju ne valja
+            else if (tBoxEmail.Text.Substring(tBoxEmail.Text.Length - 10) != "@gmail.com") // ako nema @gmail.com na kraju ne valja
             {
+                tBoxEmail.BackColor = Color.Red;
+                valid = false;
+            }
+            else if(_loginForma.userList.Any(user => user._email == tBoxEmail.Text)) // i zadnje, ako vec postoji nalog sa tim emailom ne valja
+            {
+                MessageBox.Show("Vec postoji korisnik sa tom Email adresom. Molim vas, ili izaberite drugu Email adresu ili se log inujte sa vec postojecim nalogom.");
                 tBoxEmail.BackColor = Color.Red;
                 valid = false;
             }

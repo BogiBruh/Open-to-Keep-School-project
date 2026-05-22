@@ -62,7 +62,7 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
 
         private void dataGridIgre_SelectionChanged(object sender, EventArgs e)
         {
-            if(dataGridIgre.CurrentRow.DataBoundItem == null) return;
+            if(dataGridIgre.CurrentRow?.DataBoundItem == null) return;
             igra selektovanaIgra = dataGridIgre.CurrentRow.DataBoundItem as igra;
             if (selektovanaIgra == null) return;
             labelGameName.Text = selektovanaIgra._gameName;
@@ -162,9 +162,9 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
                 }
             }
 
-            if(dateStart.Value.Date > dateEnd.Value.Date)
+            if(dateStart.Value.Date >= dateEnd.Value.Date)
             {
-                MessageBox.Show("Datum pocetka rezervacije ne moze biti posle datuma kraja rezervacije.");
+                MessageBox.Show("Datum pocetka rezervacije mora biti pre datuma kraja rezervacije.");
                 valid = false;
             }
 
@@ -215,7 +215,7 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
                     rezervacijaZaDodati.generateRezervacija(parentForma.reservationList.Last().idRezervacije + 1,
                         parentForma.idUsera,
                         idIgre,
-                        dateStart.Value.Date,
+                        DateTime.Now,
                         dateEnd.Value.Date,
                         double.Parse(labelCena.Text.Split(' ')[0]),
                         statusRezervacije.Aktivna);
@@ -229,7 +229,7 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
                     rezervacijaZaDodati.generateRezervacija(1,
                         parentForma.idUsera,
                         idIgre,
-                        dateStart.Value.Date,
+                        DateTime.Now,
                         dateEnd.Value.Date,
                         double.Parse(labelCena.Text.Split(' ')[0]),
                         statusRezervacije.Aktivna);
@@ -242,8 +242,9 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
                 parentForma.dodajRezervacijeUPrikaz(gameList, parentForma.reservationList, parentForma.svrha);
                 igra rezervisanaIgra = gameList.FirstOrDefault(igra => igra._idIgre == idIgre);
 
+                rezervisanaIgra._numberOfCopies -= 1;
                 string jsonRezervacije = JsonConvert.SerializeObject(parentForma.reservationList, Formatting.Indented);
-                string jsonIgre = JsonConvert.SerializeObject(gameList, Formatting.Indented);
+                string jsonIgre = JsonConvert.SerializeObject(gameList, Formatting.Indented);          
                 File.WriteAllText("rezervacije.json", jsonRezervacije);
                 File.WriteAllText("igre.json", jsonIgre);
                 MessageBox.Show("Uspesno ste dodali rezervaciju!");

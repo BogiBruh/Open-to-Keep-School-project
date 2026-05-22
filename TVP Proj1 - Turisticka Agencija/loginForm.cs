@@ -90,7 +90,7 @@ namespace TVP_Proj1___Turisticka_Agencija
                 user.Show();
                 this.Hide();
             }
-            else if(loggedIn._accountType == "admin" && loggedIn != null)
+            else if(loggedIn != null && loggedIn._accountType == "admin")
             {
                 adminPanel admin = new adminPanel(userList, this);
                 tBoxEmail.Text = "";

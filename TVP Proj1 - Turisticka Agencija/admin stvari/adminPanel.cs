@@ -83,7 +83,7 @@ namespace TVP_Proj1___Turisticka_Agencija
             }
         }
 
-        private void btnIzleti_Click(object sender, EventArgs e)
+        private void btnIgre_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = gameList;
             dataGridView1.ClearSelection();
@@ -168,7 +168,6 @@ namespace TVP_Proj1___Turisticka_Agencija
             {
                 case "igre":
                     izbrisiIgru();
-                    MessageBox.Show("Uspešno brisanje igre iz baze podataka.");
                     break;
                 case "korisnici":
                     izbrisiKorisnika();
@@ -206,11 +205,13 @@ namespace TVP_Proj1___Turisticka_Agencija
                     igra selektovanaIgra = (igra)dataGridView1.CurrentRow.DataBoundItem;
                     gameList.Remove(selektovanaIgra);
                     File.WriteAllText("igre.json", JsonConvert.SerializeObject(gameList, Formatting.Indented));
+
+                    MessageBox.Show("Uspešno brisanje igre iz baze podataka.");
                 }
             }
             else
             {
-                MessageBox.Show("Morate selektovati izlet da bi radilo!");
+                MessageBox.Show("Morate selektovati igru da bi radilo!");
                 return;
             }
         }
@@ -266,9 +267,10 @@ namespace TVP_Proj1___Turisticka_Agencija
         {
             if (dataGridView1.CurrentRow != null)
             {
-                if(reservationList.Any(rez => rez.idKorisnika == ((user)dataGridView1.CurrentRow.DataBoundItem)._idNaloga && rez.status == statusRezervacije.Aktivna))
+                // proveravamo da li ima ikakve rezervacije, zato sto ako ima i te rezervacije se vide moze da dodje do kresovanja
+                if(reservationList.Any(rez => rez.idKorisnika == ((user)dataGridView1.CurrentRow.DataBoundItem)._idNaloga))
                 {
-                    MessageBox.Show("Ne možete obrisati korisnika koji ima aktivne rezervacije! Molim vas, sačekajte da korisnik vrati sve svoje rezervacije.");
+                    MessageBox.Show("Ne možete obrisati korisnika koji ima rezervacije vezane za svoj id. Molim vas, prvo obrišite sve rezervacije ovog korisnika.");
                     return;
                 }
                 else
@@ -289,7 +291,10 @@ namespace TVP_Proj1___Turisticka_Agencija
 
         private void urediRezervaciju()
         {
-            MessageBox.Show("za sad ne radi!(urediRezervaciju)");
+            //MessageBox.Show("za sad ne radi!(urediRezervaciju)");
+            editReservationAdmin editRezForm = new editReservationAdmin(reservationList, this);
+            editRezForm.ShowDialog();
+            dataGridView1.Refresh();
         }
 
         private void izbrisiRezervaciju()
@@ -298,16 +303,21 @@ namespace TVP_Proj1___Turisticka_Agencija
             if(dataGridView1.CurrentRow != null)
             {
                 rezervacija rezZaBrisanje = (rezervacija)dataGridView1.CurrentRow.DataBoundItem;
-                if (rezZaBrisanje == null) return;
+                if (rezZaBrisanje == null)
+                {
+                    Console.WriteLine("rezZaBrisanje je null");
+                    return;
+                }
                 igra vracenaIgra = gameList.FirstOrDefault(ig => ig._idIgre == rezZaBrisanje.idIgre);
-                if (vracenaIgra != null)
+                if (vracenaIgra != null && rezZaBrisanje.status == statusRezervacije.Aktivna)
                 {
                     vracenaIgra._numberOfCopies++;
                 }
-                else return;
+
                 reservationList.Remove(rezZaBrisanje);
                 File.WriteAllText("rezervacije.json", JsonConvert.SerializeObject(reservationList, Formatting.Indented));
                 File.WriteAllText("igre.json", JsonConvert.SerializeObject(gameList, Formatting.Indented));
+                MessageBox.Show("Uspesno izbrisana rezervacija.");
             }
             else
             {

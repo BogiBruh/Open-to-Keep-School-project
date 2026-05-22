@@ -122,25 +122,25 @@ namespace TVP_Proj1___Open_To_Rent.admin_stvari
                 valid = false;
             }
 
-            if (!int.TryParse(tBoxGodIzdavanja.Text, out godIzdavanja))
+            if (!int.TryParse(tBoxGodIzdavanja.Text, out godIzdavanja) || godIzdavanja <= 1970)
             {
                 tBoxGodIzdavanja.BackColor = Color.Red;
                 valid = false;
             }
 
-            if (!double.TryParse(tBoxCena.Text, out cena))
+            if (!double.TryParse(tBoxCena.Text, out cena) || cena <= 0)
             {
                 tBoxCena.BackColor = Color.Red;
                 valid = false;
             }
 
-            if (!int.TryParse(tBoxBrPrimeraka.Text, out brPrimeraka))
+            if (!int.TryParse(tBoxBrPrimeraka.Text, out brPrimeraka) || brPrimeraka < 0)
             {
                 tBoxBrPrimeraka.BackColor = Color.Red;
                 valid = false;
             }
 
-            if (!int.TryParse(tBoxStarosnaGranica.Text, out starosnaGranica))
+            if (!int.TryParse(tBoxStarosnaGranica.Text, out starosnaGranica) || (starosnaGranica <= 0 || starosnaGranica > 18))
             {
                 tBoxStarosnaGranica.BackColor = Color.Red;
                 valid = false;

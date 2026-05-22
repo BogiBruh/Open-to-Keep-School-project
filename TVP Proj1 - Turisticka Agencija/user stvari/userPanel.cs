@@ -124,12 +124,17 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
             var potvrda = MessageBox.Show("Da li ste sigurni da zelite da obrisete ovu rezervaciju?", "Potvrda brisanja", MessageBoxButtons.OKCancel);
             if (potvrda == DialogResult.OK)
             {
+                if(dataGridReservations.CurrentRow?.DataBoundItem == null)
+                {
+                    MessageBox.Show("Morate prvo selektovati rezervaciju.");
+                    return;
+                }
                 prikazRezervacije rezervacijaZaBrisanje = dataGridReservations.CurrentRow.DataBoundItem as prikazRezervacije;
                 if (rezervacijaZaBrisanje == null) return;
                 rezervacija rezervacijaUBazi = reservationList.FirstOrDefault(rez => rez.idRezervacije == rezervacijaZaBrisanje.idRezervacije);
                 if(rezervacijaUBazi == null) return;
                 igra igraZaVracanje = gameList.FirstOrDefault(igra => igra._idIgre == rezervacijaUBazi.idIgre);
-                if(igraZaVracanje != null)
+                if(igraZaVracanje != null && rezervacijaUBazi.status == statusRezervacije.Aktivna)
                 {
                     igraZaVracanje._numberOfCopies++;
                 }
@@ -167,8 +172,9 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
             prikazRezervacije prikazana = dataGridReservations.CurrentRow.DataBoundItem as prikazRezervacije;
             if (prikazana == null) return;
             Console.WriteLine($"Selektovana rezervacija: {prikazana.gameName}, {prikazana.idRezervacije}");
-            int idIgre = reservationList.FirstOrDefault(rez => rez.idRezervacije == prikazana.idRezervacije).idIgre;
-            igra podaciIgre = gameList.FirstOrDefault(igra => igra._idIgre == idIgre);
+            rezervacija rezervacijaUBazi = reservationList.FirstOrDefault(rez => rez.idRezervacije == prikazana.idRezervacije);
+            if (rezervacijaUBazi == null) return;
+            igra podaciIgre = gameList.FirstOrDefault(igra => igra._idIgre == rezervacijaUBazi.idIgre);
             if (podaciIgre == null) return;
             Console.WriteLine($"Prikazujem detalje za igru: {podaciIgre._gameName}, {podaciIgre._idIgre}");
             labelGameName.Text = podaciIgre._gameName;
@@ -395,7 +401,7 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
 
                     foreach (prikazRezervacije rez in prikazRezervacijaList)
                     {
-                        if (rez.datumRezervacije == filterDateCase4)
+                        if (rez.datumRezervacije.Date == filterDateCase4)
                         {
                             if (svrha == svrhaPrikaza.aktivne)
                             {
@@ -424,7 +430,7 @@ namespace TVP_Proj1___Open_To_Rent.user_stvari
 
                     foreach (prikazRezervacije rez in prikazRezervacijaList)
                     {
-                        if (rez.datumVracanja == filterDateCase5)
+                        if (rez.datumVracanja.Date == filterDateCase5)
                         {
                             if (svrha == svrhaPrikaza.aktivne)
                             {
